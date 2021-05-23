@@ -6,27 +6,24 @@
  */
 class imageClass
 {
-  
-  function uploadFile($filesImage,$imageName="",$saveFolder="default",$queryType=1){
     /* 
-    işlem = 1 ise, resim yükleme
-    işlem = 2 ise, PDF yükleme
+      $queryType = 1 upload image
+      $queryType = 2 upload pdf
+    */
+  function uploadFile($filesImage,$imageName="",$saveFolder="default",$queryType=1){
     
-    Resim Kayıt Yeri: '../../../../view/img/cekilisResimleri/
-    PDF kayıt yeri : ../../../pdf/
-     */
     
      if($saveFolder == "default"){
        $saveFolder = "img/";
      }
 
-    
+    /* if you need any file type You can write */
     if ($queryType == 1)
       $AccessfileType = array('jpeg', 'jpg', 'png');
     else if($queryType == 2)
       $AccessfileType = array('pdf');
     else
-      die("plase set queryType");
+      die("plase set queryType"); // if not $queryType 1 or 2
     
     
 
@@ -35,10 +32,17 @@ class imageClass
     $imageNamesArray = array();
     $errorStatus = 0; 
     $errorCode = "";
-
+    
+    /* if filesImage is array */
     if(is_array($filesImage['name'])){
+      /* just count image */
       $filesImage = count($filesImage['name']);
-
+    }
+    
+    /* if an image not post */
+    if($filesImage <= 0){
+      echo "please select image";
+      die();
     }
     
     
@@ -51,10 +55,12 @@ class imageClass
       $maxSize = $filesImage['size'][$i];
       $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
       
-
+      
       if (empty($imageName)){
+        /* If you didn't send a name  */
         $imgName = trim(str_replace(" ","-",date("His"))).rand(1000,9999).".".$ext;
       }else{
+        /* if you sent name and multiple files. i rename */
         $imgName = $imageName.$i.".".$ext;
       }
 
@@ -71,14 +77,14 @@ class imageClass
            $errorStatus = 0;
         }
         else{
-          $errorCode = "Resim maxSize Geçersiz";
+          $errorCode = "max size error";
           $errorStatus = 1;
           break;
         }
          
         }
         else{
-          $errorCode = "izin verilmeyen dosya türü";
+          $errorCode = "you cant upload this folder";
           $errorStatus = 1;
           break;
 
