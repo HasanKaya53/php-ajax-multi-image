@@ -9,7 +9,7 @@
 	<body>
 		
 		<form id="imgUploadForm" method="POST" action="#">
-			<input type="file" name="img" id="img">
+			<input type="file" name="img" id="img" multiple>
 			<button id="saveImg" name="saveImg">Save Img</button>
 		</form>
 
