@@ -36,7 +36,7 @@ class imageClass
     /* if filesImage is array */
     if(is_array($filesImage['name'])){
       /* just count image */
-      $filesImage = count($filesImage['name']);
+      $filesImageCount = count($filesImage['name']);
     }
     
     /* if an image not post */
@@ -47,7 +47,7 @@ class imageClass
     
     
 
-    for($i = 0; $i < $filesImage; $i++){
+    for($i = 0; $i < $filesImageCount; $i++){
       $path = $saveFolder;
 
       $img = $filesImage['name'][$i];
