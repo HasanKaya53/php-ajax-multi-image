@@ -92,7 +92,7 @@ class imageClass
         
     }
     if($errorStatus == 1){
-      return array($errorCode." ".$errorStatus);
+      return array($errorCode,$errorStatus);
     }else{  
       for($i = 0;$i<count($allTemp);$i++){
          if( !empty($allTemp[$i]) && !empty($allPath[$i]) ){
