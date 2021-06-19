@@ -2,7 +2,7 @@
 require_once("image.class.php");
 
 $imageClass = new imageClass;
-$images = $_FILES["resim"];
+$images = $_FILES["img"];
 $imageName = date("His"); //optional
 
 
